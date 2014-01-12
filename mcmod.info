@@ -1,0 +1,10 @@
+[
+{
+  "modid": "RottenFleshToLeather",
+  "name": "Rotten Flesh to Leather",
+  "description": "Convert your stacks of rotten flesh to something useful!",
+  "version": "1.0",
+  "mcversion": "1.6.4",
+  "authors": [ "DeltaGeek" ]
+}
+]
