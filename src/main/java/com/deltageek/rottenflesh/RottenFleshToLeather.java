@@ -2,6 +2,7 @@ package com.deltageek.rottenflesh;
 
 import com.deltageek.rottenflesh.config.RottenFleshConfig;
 import com.deltageek.rottenflesh.init.ModItems;
+import com.deltageek.rottenflesh.init.Recipes;
 import com.deltageek.rottenflesh.proxy.IProxy;
 import com.deltageek.rottenflesh.util.Reference;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -27,20 +28,21 @@ public class RottenFleshToLeather {
         // load config
         RottenFleshConfig.init(event.getSuggestedConfigurationFile());
 
+        // Register for config events
+        FMLCommonHandler.instance().bus().register(new RottenFleshConfig());
+
         // Register items & blocks
         ModItems.init();
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event){
-        // Register for event handlers
-        FMLCommonHandler.instance().bus().register(instance);
-
         // UI
 
         // Tile Entities
 
         // Recipes
+        Recipes.init();
     }
 
     @Mod.EventHandler

@@ -1,5 +1,6 @@
 package com.deltageek.rottenflesh.config;
 
+import com.deltageek.rottenflesh.init.Recipes;
 import com.deltageek.rottenflesh.util.LogHelper;
 import com.deltageek.rottenflesh.util.Reference;
 import cpw.mods.fml.client.event.ConfigChangedEvent;
@@ -22,7 +23,7 @@ public class RottenFleshConfig {
         configuration = null;
         try{
             configuration = new Configuration(configFile);
-            load(configuration);
+            load();
 
             LogHelper.info("Mod configuration successfully loaded");
         }
@@ -31,11 +32,11 @@ public class RottenFleshConfig {
         }
     }
 
-    private static void load(Configuration config){
+    private static void load(){
         DIFFICULTY_MODE = configuration.getInt("difficultyMode", Configuration.CATEGORY_GENERAL, 0, 0, 2, Reference.DIFFICULTY_COMMENT);
 
-        if(config.hasChanged())
-            config.save();
+        if(configuration.hasChanged())
+            configuration.save();
     }
 
     public static ConfigCategory getConfigCategory(String categoryName){
@@ -49,8 +50,9 @@ public class RottenFleshConfig {
     @SubscribeEvent
     public void onConfigurationChanged(ConfigChangedEvent.OnConfigChangedEvent event){
         if(event.modID.equalsIgnoreCase(Reference.MOD_ID)){
-            // resync config
-
+            Recipes.removeRecipes();
+            load();
+            Recipes.init();
         }
     }
 }

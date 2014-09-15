@@ -22,8 +22,8 @@ group= "com.deltageek.rottenflesh" // http://maven.apache.org/guides/mini/guide-
 archivesBaseName = "RottenFleshToLeather"
 
 minecraft {
-    version = "1.7.10-10.13.0.1160"
-    assetDir = "assets"
+    version = "1.7.10-10.13.1.1217"
+    assetDir = "."
 }
 
 dependencies {
